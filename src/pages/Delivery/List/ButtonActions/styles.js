@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import ReactModal from 'react-modal';
 
 export const Container = styled.div`
   display: flex;
@@ -7,6 +8,50 @@ export const Container = styled.div`
   justify-content: center;
 `;
 
+export const Modal = styled(ReactModal)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+`;
+
+export const ContentModal = styled.section`
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  padding: 25px;
+  border: 1px solid #999;
+  border-radius: 6px;
+
+  strong {
+    margin-bottom: 4px;
+  }
+
+  p {
+    margin-bottom: 4px;
+  }
+
+  button {
+    display: flex;
+    align-self: flex-end;
+    background: none;
+    border: none;
+    margin-bottom: 8px;
+  }
+
+  hr {
+    margin: 12px 0;
+  }
+
+  img {
+    display: flex;
+    align-self: center;
+    width: 260px;
+    height: 40px;
+    margin-top: 4px;
+  }
+`;
 export const ContainerButton = styled.div`
   position: relative;
 
@@ -51,7 +96,8 @@ export const ActionList = styled.ul`
       border-top: 1px solid #999;
     }
 
-    button {
+    button,
+    a {
       text-align: center;
       display: flex;
       align-items: center;
