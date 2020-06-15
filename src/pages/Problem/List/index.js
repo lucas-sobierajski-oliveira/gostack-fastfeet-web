@@ -26,7 +26,7 @@ export default function Delivery() {
 
   return (
     <Container>
-      <h2>Gerenciando encomendas</h2>
+      <h2>Gerenciando problemas</h2>
       <SearchContainer>
         <AsyncSelect />
         <Link to="/delivery/new">

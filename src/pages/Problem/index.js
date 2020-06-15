@@ -1,11 +1,5 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import ProblemList from './List';
+import ProblemForm from './Form';
+import ProblemNew from './New';
 
-import { setPath } from '~/store/models/user/actions';
-// import { Container } from './styles';
-
-export default function Problem() {
-  const dispatch = useDispatch();
-  dispatch(setPath('problem'));
-  return <h1>Problem</h1>;
-}
+export { ProblemList, ProblemForm, ProblemNew };

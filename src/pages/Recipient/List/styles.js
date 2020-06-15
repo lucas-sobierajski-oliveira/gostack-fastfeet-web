@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { statusColors } from '~/styles/colors';
 
 export const Container = styled.div`
   padding: 36px 120px;
@@ -35,7 +36,7 @@ export const SearchContainer = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  button {
+  a {
     svg {
       margin-right: 4px;
     }
@@ -58,4 +59,14 @@ export const SearchContainer = styled.div`
     height: 36px;
     width: 237px;
   }
+`;
+
+export const SpanDeliveryman = styled.span`
+  padding: 8px;
+  margin-right: 6px;
+  border-radius: 12px;
+  font-weight: bold;
+  color: #fff;
+  font-size: 16px;
+  background: #bad2ff;
 `;
