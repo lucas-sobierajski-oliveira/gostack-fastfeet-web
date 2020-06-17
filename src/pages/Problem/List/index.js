@@ -7,21 +7,20 @@ import { Link } from 'react-router-dom';
 import api from '~/services/api';
 import { setPath } from '~/store/models/user/actions';
 import ButtonActions from './ButtonActions';
-import ItemStatus from './ItemStatus';
-import { Container, SearchContainer, SpanDeliveryman } from './styles';
+import { Container, SearchContainer } from './styles';
 
-export default function Delivery() {
+export default function ProblemList() {
   const dispatch = useDispatch();
   dispatch(setPath('delivery'));
-  const [deliveries, setDeliveries] = useState([]);
+  const [problems, setProblems] = useState([]);
 
-  async function loadDeliveries() {
-    const response = await api.get('deliveries');
-    setDeliveries(response.data);
+  async function loadProblems() {
+    const response = await api.get('problems');
+    setProblems(response.data);
   }
 
   useEffect(() => {
-    loadDeliveries();
+    loadProblems();
   }, []);
 
   return (
@@ -38,32 +37,17 @@ export default function Delivery() {
       <table>
         <tr>
           <th>ID</th>
-          <th>Destinatário</th>
-          <th>Entregador</th>
-          <th>Cidade</th>
-          <th>Estado</th>
-          <th>Status</th>
+          <th>Problema</th>
           <th>Ações</th>
         </tr>
-        {deliveries.map((delivery) => (
+        {problems.map((problem) => (
           <tr>
-            <td>#{delivery.id}</td>
-            <td>{delivery.recipient.nome}</td>
-            <td>
-              <SpanDeliveryman status={delivery.status}>
-                {delivery.deliveryman.name.substring(0, 1)}
-              </SpanDeliveryman>
-              {delivery.deliveryman.name}
-            </td>
-            <td>{delivery.recipient.cidade}</td>
-            <td>{delivery.recipient.estado}</td>
-            <td>
-              <ItemStatus status={delivery.status} />
-            </td>
+            <td>#{problem.id}</td>
+            <td>{problem.description}</td>
             <td>
               <ButtonActions
-                delivery={delivery}
-                updateDeliveries={loadDeliveries}
+                problem={problem}
+                updateDeliveries={loadProblems}
               />
             </td>
           </tr>

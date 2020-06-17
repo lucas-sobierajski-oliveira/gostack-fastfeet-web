@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 
 import {
   MdClear,
   MdMoreHoriz,
-  MdEdit,
   MdPanoramaFishEye,
   MdRemove,
   MdKeyboardArrowDown,
@@ -25,7 +23,7 @@ import {
 
 Modal.setAppElement('#root');
 
-export default function ButtonActions({ delivery, updateDeliveries }) {
+export default function ButtonActions({ problem, updateProblems }) {
   const [visible, setVisible] = useState(false);
   const [modal, setModal] = useState(false);
 
@@ -51,8 +49,8 @@ export default function ButtonActions({ delivery, updateDeliveries }) {
     }
 
     try {
-      await api.delete(`/deliveries/${id}`);
-      updateDeliveries();
+      await api.delete(`/problems/${id}`);
+      updateProblems();
       console.tron.log('registro removido');
     } catch (err) {
       console.tron.log('erro ao tentar deletar o registro');
@@ -71,28 +69,8 @@ export default function ButtonActions({ delivery, updateDeliveries }) {
               <MdClear color="#666" size={22} />
             </button>
 
-            <strong>Informações da encomenda</strong>
-            <p>{delivery.recipient.rua}</p>
-            <p>{delivery.recipient.cidade}</p>
-            <p>{delivery.recipient.cep}</p>
-            <hr />
-            <strong>Datas</strong>
-            <p>
-              <b>Entrada</b>: {delivery.start_at}
-            </p>
-            <p>
-              <b>Saída</b>: {delivery.end_at}
-            </p>
-            <hr />
-            <strong>Assinatura do destinatário </strong>
-            <img
-              src={
-                delivery.signature
-                  ? delivery.signature.url
-                  : 'https://diplomaciacivil.org.br/wp-content/uploads/2019/09/assinatura-rodrigo.png'
-              }
-              alt="a"
-            />
+            <strong>Visualizar problema</strong>
+            <p>{problem.description}</p>
           </ContentModal>
         </Modal>
         <HideContainer visible={visible}>
@@ -106,13 +84,7 @@ export default function ButtonActions({ delivery, updateDeliveries }) {
                 </button>
               </li>
               <li>
-                <Link to={`/delivery/edit/${delivery.id}`} delivery={delivery}>
-                  <MdEdit color="blue" />
-                  Editar
-                </Link>
-              </li>
-              <li>
-                <button type="button" onClick={() => handleRemove(delivery.id)}>
+                <button type="button" onClick={() => handleRemove(problem.id)}>
                   <MdRemove color="red" />
                   Remover
                 </button>

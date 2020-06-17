@@ -10,7 +10,7 @@ import ButtonActions from './ButtonActions';
 import ItemStatus from './ItemStatus';
 import { Container, SearchContainer, SpanDeliveryman } from './styles';
 
-export default function Delivery() {
+export default function DeliveryList() {
   const dispatch = useDispatch();
   dispatch(setPath('delivery'));
   const [deliveries, setDeliveries] = useState([]);
